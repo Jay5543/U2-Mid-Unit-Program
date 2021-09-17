@@ -18,10 +18,73 @@ Total Earnings: $1184.38
 
  */
 
+/*
+~PLAN~
+Make an input asking for
+        - "What is your hourly rate?"
+        - "How many hours have you worked this week?"
+        - "How much money did you earn from selling the cars?"
+        - "What is your commission %?"
+
+Do all the cal
+     Time first
+        - How much in hours did they make? (hours * perHourPay)
+     Commission
+        - How much in commissions (totalledSold * commission)
+     Add them together
+        - time * commissions
+
+
+Output
+
+       - Make a popup box with the total amount ("total amount is: " + total
+ */
+
+import javax.swing.*;
+import java.text.DecimalFormat;
+
 public class SalesCommission {
 
     public static void main(String[] args) {
 
+        double hours = Double.parseDouble(JOptionPane.showInputDialog("How many hours have you worked this week?"));
+        double perHourPay = Double.parseDouble(JOptionPane.showInputDialog("How much do you get paid by the hour"));
+        double totalAmountSold = Double.parseDouble(JOptionPane.showInputDialog("How much were all the car sold"));
+        double commission = Double.parseDouble(JOptionPane.showInputDialog("How much do you earn in commission(Percentage please(##.#%))"));
+        double time = time(hours, perHourPay);
+        double commission2 = commission2(totalAmountSold, commission);
+        double total = total(time, commission2);
+        output(total);
+
+
+
     }
+
+    public static double time(double hours, double perHourPay){
+
+        return hours * perHourPay;
+
+    }
+
+    public static double commission2(double totalAmountSold, double commission){
+
+        return totalAmountSold * commission/100.0;
+
+    }
+
+    public static double total(double time, double commission2){
+
+        return time + commission2;
+
+    }
+
+    public static void output(double total){
+
+        DecimalFormat round = new DecimalFormat("#,###.00");
+        JOptionPane.showMessageDialog(null, "The amount you earned is: " + round.format(total));
+
+    }
+
+
 
 }
